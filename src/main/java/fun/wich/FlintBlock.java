@@ -6,7 +6,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 public class FlintBlock extends Block {
 	public FlintBlock(Properties properties) { super(properties); }
 	@Override
-	protected @NotNull ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	protected @NotNull InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (stack.is(FlintBlockMod.LIGHTS_FLINT)) {
 			BlockPos blockPos = hit.getBlockPos().relative(hit.getDirection());
 			if (BaseFireBlock.canBePlacedAt(level, blockPos, player.getDirection())) {
@@ -32,9 +32,9 @@ public class FlintBlock extends Block {
 					CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockPos, stack);
 					stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
 				}
-				return ItemInteractionResult.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 		}
-		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		return InteractionResult.PASS;
 	}
 }
