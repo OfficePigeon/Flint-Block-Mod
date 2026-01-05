@@ -20,7 +20,7 @@ public class FlintBlock extends Block {
 	@Override @SuppressWarnings("deprecation")
 	public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		ItemStack stack = player.getItemInHand(hand);
-		if (stack.getItem().is(FlintBlockMod.LIGHTS_FLINT)) {
+		if (stack.is(FlintBlockMod.LIGHTS_FLINT)) {
 			BlockPos blockPos = hit.getBlockPos().relative(hit.getDirection());
 			if (BaseFireBlock.canBePlacedAt(level, blockPos, player.getDirection())) {
 				level.playSound(player, blockPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
