@@ -24,11 +24,13 @@ public class FlintBlockMod implements ModInitializer {
 
 	public static final Block FLINT_BLOCK = register("flint_block", FlintBlock::new, Block.Properties.ofFullCopy(Blocks.STONE).mapColor(MapColor.COLOR_BLACK));
 	public static Block register(String name, Function<Block.Properties, Block> blockFactory, Block.Properties properties) {
-		return Registry.register(BuiltInRegistries.BLOCK, ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name)), blockFactory.apply(properties));
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
+		return Registry.register(BuiltInRegistries.BLOCK, key, blockFactory.apply(properties.setId(key)));
 	}
 	public static final Item FLINT_BLOCK_ITEM = register("flint_block", properties -> new BlockItem(FLINT_BLOCK, properties), new Item.Properties());
 	public static Item register(String name, Function<Item.Properties, Item> itemFactory, Item.Properties properties) {
-		return Registry.register(BuiltInRegistries.ITEM, ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name)), itemFactory.apply(properties));
+		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
+		return Registry.register(BuiltInRegistries.ITEM, key, itemFactory.apply(properties.setId(key)));
 	}
 
 	@Override

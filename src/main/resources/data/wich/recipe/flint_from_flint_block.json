@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-	{ "item": "wich:flint_block" }
+	"wich:flint_block"
   ],
   "result": {
 	"count": 9,
