@@ -7,7 +7,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -30,7 +29,7 @@ public class FlintBlock extends Block {
 				level.gameEvent(player, GameEvent.BLOCK_PLACE, blockPos);
 				if (player instanceof ServerPlayer) {
 					CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockPos, stack);
-					stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+					stack.hurtAndBreak(1, player, hand.asEquipmentSlot());
 				}
 				return InteractionResult.SUCCESS;
 			}
