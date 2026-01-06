@@ -1,7 +1,7 @@
 package fun.wich;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.tag.TagRegistry;
+import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.Tag;
@@ -17,7 +17,7 @@ import java.util.function.Function;
 public class FlintBlockMod implements ModInitializer {
 	public static final String MOD_ID = "wich";
 
-	public static final Tag<Item> LIGHTS_FLINT = TagRegistry.item(new ResourceLocation(MOD_ID, "lights_flint"));
+	public static final Tag<Item> LIGHTS_FLINT = TagFactory.ITEM.create(new ResourceLocation(MOD_ID, "lights_flint"));
 
 	public static final Block FLINT_BLOCK = register("flint_block", FlintBlock::new, Block.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(1.5F, 6.0F));
 	public static Block register(String name, Function<Block.Properties, Block> blockFactory, Block.Properties properties) {

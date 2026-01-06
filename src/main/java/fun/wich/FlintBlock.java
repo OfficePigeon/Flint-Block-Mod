@@ -14,11 +14,12 @@ import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 
 public class FlintBlock extends Block {
 	public FlintBlock(Properties properties) { super(properties); }
 	@Override @SuppressWarnings("deprecation")
-	public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (stack.is(FlintBlockMod.LIGHTS_FLINT)) {
 			BlockPos blockPos = hit.getBlockPos().relative(hit.getDirection());
